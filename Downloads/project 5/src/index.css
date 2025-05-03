@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.mirror {
+  transform: scaleX(-1);
+}
+
+.control-btn {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-200;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.pulse::before {
+  content: '';
+  @apply absolute w-full h-full rounded-full bg-red-500;
+  animation: pulse-ring 1.5s infinite;
+  z-index: -1;
+}
